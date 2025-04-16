@@ -23,10 +23,15 @@ publications:
     stage: build-paper
     overleaf:
       project_id: 68000059d42b134573cb2e35
+      wdir: paper
       sync_paths: # Bidirectional
-        - paper/paper.tex
+        - paper.tex
       push_paths: # Always push these to Overleaf
-        - paper/figures
+        - figures
+      # Track the commit of the last sync so we can diff from that
+      # If null, we will prioritize their copy, since projects are imported
+      # from Overleaf, not to it
+      last_sync_commit: 65d3ddafa1746605529f8d17ce7c6a2a888a728a
 environments:
   py:
     path: environment.yml
