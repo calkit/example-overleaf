@@ -14,12 +14,19 @@ stages:
       - environment.yml
     outs:
       - figures/voltage-time-series.png
+  copy-figures-to-paper-dir:
+    cmd: cp -rf figures paper
+    deps:
+      - figures
+    outs:
+      - paper/figures:
+          cache: false
   build-paper:
     cmd: >
       calkit xenv -n tex --
       latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex
     deps:
-      - figures
+      - paper/figures
       - paper/paper.tex
     outs:
       - paper/paper.pdf

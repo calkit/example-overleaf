@@ -37,33 +37,33 @@ stages:
       md5: b078655712ed98118fbcb09138d1824a
       size: 45844
   copy-figures-to-paper-dir:
-    cmd: cp -r figures paper/figures
-    deps:
-    - path: figures
-      hash: md5
-      md5: d6fd2418e3b774996ddd0f26715c36ac.dir
-      size: 45148
-      nfiles: 2
-    outs:
-    - path: paper/figures
-      hash: md5
-      md5: d6fd2418e3b774996ddd0f26715c36ac.dir
-      size: 45148
-      nfiles: 2
-  build-paper:
-    cmd: "calkit xenv -n tex -- latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex\n"
+    cmd: cp -rf figures paper
     deps:
     - path: figures
       hash: md5
       md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
       size: 45869
       nfiles: 2
+    outs:
+    - path: paper/figures
+      hash: md5
+      md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
+      size: 45869
+      nfiles: 2
+  build-paper:
+    cmd: "calkit xenv -n tex -- latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex\n"
+    deps:
+    - path: paper/figures
+      hash: md5
+      md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
+      size: 45869
+      nfiles: 2
     - path: paper/paper.tex
       hash: md5
-      md5: 6455fc859c8b1838f22d5ac74223b323
-      size: 604
+      md5: 7ca3581420fb2613eb40cc70f98d2826
+      size: 601
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: c06d86d1f90e7733ac83b0e8384e10a0
+      md5: b23adc56af410126014a963756673165
       size: 96718
