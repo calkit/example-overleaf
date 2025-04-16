@@ -1,13 +1,11 @@
-owner: calkit
-name: example-basic
-title: Basic Calkit example
-description: A basic Calkit exmple project.
-git_repo_url: https://github.com/calkit/example-basic
+name: example-overleaf
+title: Overleaf integration example
+description: A Calkit project that demonstrates integrating with Overleaf
+  to edit a publication.
+git_repo_url: https://github.com/calkit/example-overleaf
 dependencies:
   - docker
   - conda
-questions:
-  - Can we make reproducibility simple?
 datasets:
   - path: data/raw/data.csv
     title: Raw data
@@ -33,3 +31,7 @@ environments:
     image: texlive/texlive:latest-full
     wdir: /work
     description: TeX Live via Docker.
+derived_from:
+  project: calkit/example-basic
+  git_repo_url: https://github.com/calkit/example-basic
+  git_rev: 42f00837f638936adad7faf1790058ed0c625ce8

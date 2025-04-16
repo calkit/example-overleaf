@@ -1,15 +1,4 @@
-# Basic Calkit example
+# Overleaf integration example
 
-This is a basic Calkit example project,
-which includes data collection,
-figure generation,
-and LaTeX article compilation,
-all part of a single reproducible DVC pipeline.
 
-You can also view this project on [calkit.io](https://calkit.io/calkit/example-basic).
-
-This project can be reproduced with:
-
-```sh
-calkit run
-```
+A Calkit project that demonstrates integrating with Overleaf to edit a publication.
