@@ -1,4 +1,4 @@
-name: calkit-example-basic
+name: calkit-example-overleaf-py
 channels:
   - conda-forge
 dependencies:
