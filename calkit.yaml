@@ -47,3 +47,5 @@ derived_from:
   project: calkit/example-basic
   git_repo_url: https://github.com/calkit/example-basic
   git_rev: 42f00837f638936adad7faf1790058ed0c625ce8
+showcase:
+  - publication: paper/paper.pdf
