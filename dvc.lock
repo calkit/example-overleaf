@@ -37,7 +37,7 @@ stages:
       md5: b078655712ed98118fbcb09138d1824a
       size: 45844
   copy-figures-to-paper-dir:
-    cmd: cp -rf figures paper
+    cmd: cp -rf figures paper && rm paper/figures/.gitignore
     deps:
     - path: figures
       hash: md5
@@ -47,23 +47,23 @@ stages:
     outs:
     - path: paper/figures
       hash: md5
-      md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
-      size: 45869
-      nfiles: 2
+      md5: 9e1d55998c6deae6704b2993b9b094f0.dir
+      size: 45844
+      nfiles: 1
   build-paper:
     cmd: "calkit xenv -n tex -- latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex\n"
     deps:
     - path: paper/figures
       hash: md5
-      md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
-      size: 45869
-      nfiles: 2
+      md5: 9e1d55998c6deae6704b2993b9b094f0.dir
+      size: 45844
+      nfiles: 1
     - path: paper/paper.tex
       hash: md5
-      md5: 7ca3581420fb2613eb40cc70f98d2826
-      size: 601
+      md5: f5e03e16d9612bff0af717894a261e64
+      size: 618
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: b23adc56af410126014a963756673165
-      size: 96718
+      md5: 849680de4f018f216299d81fd9e1f23f
+      size: 97278

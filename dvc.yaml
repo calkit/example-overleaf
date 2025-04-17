@@ -15,7 +15,7 @@ stages:
     outs:
       - figures/voltage-time-series.png
   copy-figures-to-paper-dir:
-    cmd: cp -rf figures paper
+    cmd: cp -rf figures paper && rm paper/figures/.gitignore
     deps:
       - figures
     outs:
