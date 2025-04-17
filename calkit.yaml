@@ -31,7 +31,7 @@ publications:
       # Track the commit of the last sync so we can diff from that
       # If null, we will prioritize their copy, since projects are imported
       # from Overleaf, not to it
-      last_sync_commit: 4ca28abdb53320935abe67a129062df9e4a87474
+      last_sync_commit: 688d8a008b80260d800bce0ad76ccc48985684dd
 environments:
   py:
     path: environment.yml
