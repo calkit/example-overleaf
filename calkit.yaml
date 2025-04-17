@@ -23,6 +23,7 @@ publications:
     stage: build-paper
     overleaf:
       project_id: 68000059d42b134573cb2e35
+      wdir: paper
       sync_paths: # Bidirectional
         - paper.tex
       push_paths: # Always push these to Overleaf
