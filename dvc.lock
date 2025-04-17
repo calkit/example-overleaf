@@ -29,34 +29,34 @@ stages:
       size: 120
     - path: scripts/plot-voltage.py
       hash: md5
-      md5: 087a567a0c0f6199a908399013d564a1
-      size: 297
+      md5: b6aecc253448164cc02116ec4ba40d96
+      size: 323
     outs:
     - path: figures/voltage-time-series.png
       hash: md5
-      md5: b078655712ed98118fbcb09138d1824a
-      size: 45844
+      md5: fa9e780bba462309bdd039ac2dabdd87
+      size: 45746
   copy-figures-to-paper-dir:
     cmd: cp -rf figures paper && rm paper/figures/.gitignore
     deps:
     - path: figures
       hash: md5
-      md5: 8d47fda6e0051eb228ed54fdb84d2662.dir
-      size: 45869
+      md5: aebedcb3099cdedee433511d7b836ea3.dir
+      size: 45771
       nfiles: 2
     outs:
     - path: paper/figures
       hash: md5
-      md5: 9e1d55998c6deae6704b2993b9b094f0.dir
-      size: 45844
+      md5: f7a1d27041aec7ee168320093656499c.dir
+      size: 45746
       nfiles: 1
   build-paper:
     cmd: "calkit xenv -n tex -- latexmk -cd -interaction=nonstopmode -pdf paper/paper.tex\n"
     deps:
     - path: paper/figures
       hash: md5
-      md5: 9e1d55998c6deae6704b2993b9b094f0.dir
-      size: 45844
+      md5: f7a1d27041aec7ee168320093656499c.dir
+      size: 45746
       nfiles: 1
     - path: paper/paper.tex
       hash: md5
@@ -65,5 +65,5 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 441d37333b5db3bf65acc7486755d258
-      size: 97449
+      md5: c2f30a105c12b4da83e98741a5576c56
+      size: 97395
