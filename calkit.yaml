@@ -6,6 +6,49 @@ git_repo_url: https://github.com/calkit/example-overleaf
 dependencies:
   - docker
   - conda
+environments:
+  py:
+    path: environment.yml
+    kind: conda
+    description: A Python environment
+  tex:
+    kind: docker
+    image: texlive/texlive:latest-full
+    wdir: /work
+    description: TeX Live via Docker.
+pipeline:
+  stages:
+    collect-data:
+      kind: python-script
+      script_path: scripts/collect-data.py
+      environment: py
+      outputs:
+        - data/raw/data.csv
+    plot-voltage:
+      kind: python-script
+      script_path: scripts/plot-voltage.py
+      environment: py
+      inputs:
+        - data/raw/data.csv
+      outputs:
+        - figures/voltage-time-series.png
+    copy-figures-to-paper-dir:
+      kind: shell-command
+      command: cp -rf figures paper && rm paper/figures/.gitignore
+      environment: py
+      inputs:
+        - figures
+      outputs:
+        - path: paper/figures
+          storage: null
+    build-paper:
+      kind: latex
+      environment: tex
+      target_path: paper/paper.tex
+      inputs:
+        - paper/figures
+      outputs:
+        - paper/paper.pdf
 datasets:
   - path: data/raw/data.csv
     title: Raw data
@@ -33,16 +76,6 @@ publications:
       # If null, we will prioritize their copy, since projects are imported
       # from Overleaf, not to it
       last_sync_commit: 6c197a01a0ff7ed98bb97a2a3a2035ec5242b1c2
-environments:
-  py:
-    path: environment.yml
-    kind: conda
-    description: A Python environment
-  tex:
-    kind: docker
-    image: texlive/texlive:latest-full
-    wdir: /work
-    description: TeX Live via Docker.
 derived_from:
   project: calkit/example-basic
   git_repo_url: https://github.com/calkit/example-basic
