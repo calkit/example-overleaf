@@ -33,12 +33,14 @@ pipeline:
       outputs:
         - figures/voltage-time-series.png
     copy-figures-to-paper-dir:
-      kind: copy-folder
-      src: figures
-      dest: paper
-      exclude:
-        - figures/.gitignore
-      always_run: true
+      kind: shell-command
+      command: cp -rf figures paper && rm paper/figures/.gitignore
+      environment: py
+      inputs:
+        - figures
+      outputs:
+        - path: paper/figures
+          storage: null
     build-paper:
       kind: latex
       environment: tex
