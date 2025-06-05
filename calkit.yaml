@@ -35,7 +35,7 @@ pipeline:
     copy-figures-to-paper-dir:
       kind: shell-command
       command: cp -rf figures paper && rm paper/figures/.gitignore
-      environment: py
+      environment: _system
       inputs:
         - figures
       outputs:
