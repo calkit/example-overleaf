@@ -40,7 +40,7 @@ pipeline:
         - figures
       outputs:
         - path: paper/figures
-          storage:
+          storage: null
     build-paper:
       kind: latex
       environment: tex
