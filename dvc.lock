@@ -37,8 +37,7 @@ stages:
       md5: 1639737ee06b6ea882ab88c9c5e54db0
       size: 47458
   copy-figures-to-paper-dir:
-    cmd: bash --noprofile --norc -c "cp -rf figures paper && rm 
-      paper/figures/.gitignore"
+    cmd: bash --noprofile --norc -c "cp -rf figures references.bib paper && rm paper/figures/.gitignore"
     deps:
     - path: figures
       hash: md5
@@ -51,14 +50,18 @@ stages:
       md5: 820c00a2450edf56a0721e5d1fde2f56.dir
       size: 47458
       nfiles: 1
+    - path: paper/references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode 
-      -pdf paper/paper.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode -pdf
+      paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: aae609e27af6d96abdb1a8edea194ed4
-      size: 3729
+      md5: c690074afac5591de499368a2502eb82
+      size: 1171
     - path: paper/figures
       hash: md5
       md5: 820c00a2450edf56a0721e5d1fde2f56.dir
@@ -66,16 +69,19 @@ stages:
       nfiles: 1
     - path: paper/paper.tex
       hash: md5
-      md5: b21f76eb1f9ab58940717d9b5165edf9
-      size: 745
+      md5: 8af356c24f54686006a66be4f4a34905
+      size: 829
+    - path: references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: feeb5ff1c76d6ff2f9fd30dae1b091bb
-      size: 101008
+      md5: 4004c20db84e2ab36f6c3d2317bfaab2
+      size: 116754
   _check-env-py:
-    cmd: calkit check conda-env --file environment.yml --output 
-      .calkit/env-locks/py.yml
+    cmd: calkit check environment --name py
     deps:
     - path: environment.yml
       hash: md5
@@ -87,10 +93,9 @@ stages:
       md5: 163fbba5ab4a4b6d6bafc116b3cbec5f
       size: 4423
   _check-env-tex:
-    cmd: calkit check docker-env texlive/texlive:latest-full -o 
-      .calkit/env-locks/tex.json
+    cmd: calkit check environment --name tex
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: aae609e27af6d96abdb1a8edea194ed4
-      size: 3729
+      md5: c690074afac5591de499368a2502eb82
+      size: 1171

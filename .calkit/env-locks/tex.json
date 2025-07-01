@@ -1,71 +1,27 @@
-[
-    {
-        "RepoTags": [
-            "texlive/texlive:latest-full"
-        ],
-        "Parent": "",
-        "Comment": "buildkit.dockerfile.v0",
-        "Created": "2025-06-08T15:44:10.623291737Z",
-        "Author": "",
-        "Config": {
-            "Hostname": "",
-            "Domainname": "",
-            "User": "",
-            "AttachStdin": false,
-            "AttachStdout": false,
-            "AttachStderr": false,
-            "Tty": false,
-            "OpenStdin": false,
-            "StdinOnce": false,
-            "Env": [
-                "PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
-                "LANG=C.UTF-8",
-                "LC_ALL=C.UTF-8",
-                "TEXLIVE_INSTALL_NO_CONTEXT_CACHE=1",
-                "NOPERLDOC=1",
-                "DEBIAN_FRONTEND=noninteractive"
-            ],
-            "Cmd": [
-                "bash"
-            ],
-            "Image": "",
-            "Volumes": null,
-            "WorkingDir": "/workdir",
-            "Entrypoint": null,
-            "OnBuild": null,
-            "Labels": {
-                "org.opencontainers.image.authors": "Island of TeX",
-                "org.opencontainers.image.source": "https://gitlab.com/islandoftex/images/texlive/-/blob/master/Dockerfile",
-                "org.opencontainers.image.url": "https://gitlab.com/islandoftex/images/texlive"
-            }
-        },
-        "Architecture": "amd64",
-        "Os": "linux",
-        "Size": 5184121479,
-        "GraphDriver": {
-            "Data": {
-                "LowerDir": "/var/lib/docker/overlay2/5794a821187883365e575d08c5df9cfb84dd0542b691dca229e966eeec77c639/diff:/var/lib/docker/overlay2/af0bdb1818d9c70cfb30f5e626c93d752761ddae93e9baf63f9bd944813ca0a4/diff:/var/lib/docker/overlay2/8774db51ab24749e22e78d95967fa59e66ff6e11fd9745ad24bd3cfc9d6cec9b/diff:/var/lib/docker/overlay2/6c35c230d5ce15d3f28f97819154f60cd739190a1c4e257589a5338bc2fd182a/diff:/var/lib/docker/overlay2/3104846d31431bd2f7e5ba989b41f87c180bed4f6dd0eae9494cfe94d135d9a1/diff:/var/lib/docker/overlay2/f026d2c2950f3778b69e0b83e916c44de39bce6d7a9142a09a7c447bb260fec9/diff:/var/lib/docker/overlay2/13c66985ddc168e2a8e1f246c3c8fab025961061fa0d1f0d6105804e27809229/diff:/var/lib/docker/overlay2/6455b0ddc0b7ffdd355bbe2baa630032dc7a23078df217a788f0aafb8c42961e/diff",
-                "MergedDir": "/var/lib/docker/overlay2/cdec0fdc7be9b8910da8baa5a7f5fbc008d6b267d9d27664996c322c46209c93/merged",
-                "UpperDir": "/var/lib/docker/overlay2/cdec0fdc7be9b8910da8baa5a7f5fbc008d6b267d9d27664996c322c46209c93/diff",
-                "WorkDir": "/var/lib/docker/overlay2/cdec0fdc7be9b8910da8baa5a7f5fbc008d6b267d9d27664996c322c46209c93/work"
-            },
-            "Name": "overlay2"
-        },
-        "RootFS": {
-            "Type": "layers",
-            "Layers": [
-                "sha256:9f078d4986826e2d88c56ea038b292b649def452ef5940aacc92cab91f8558de",
-                "sha256:f1a50fed543420ae4df8f2ec40b0a4f74a73f554d19bd50c8c4d5e412c86aeeb",
-                "sha256:5aa90f5e8122fa1b325d97f8941b8650e5f157edba63f4506feb8807d36244ce",
-                "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
-                "sha256:584bc8dc601fbbcad27e13f1ca2e14e57b0ec82e3d780098d20e038bd2ffff2e",
-                "sha256:ddae0bb17611bde764572951f1f35c5b274230b4d6b7b975dde93470af267d58",
-                "sha256:5a6918dba8e5c65088ed600d707006d0876ab1f6e30a3822c6bad2ea93e8e01d",
-                "sha256:9b2de173ea765b44f8692409b4f762c694a790458c6d28f0c920609256371401",
-                "sha256:c954aa33edac522ca778da0e1d472f3e043c16bcc13621971c915e329489661b"
-            ]
-        },
-        "DockerfileMD5": null,
-        "DepsMD5s": {}
-    }
-]
+{
+    "RepoTags": [
+        "texlive/texlive:latest-full"
+    ],
+    "RepoDigests": [
+        "texlive/texlive@sha256:cffb65bca5e12540720de94efc03529e49b167e0eb043dcdc3531e4dcb1ead48"
+    ],
+    "Architecture": "arm64",
+    "Os": "linux",
+    "Size": 2440102589,
+    "RootFS": {
+        "Type": "layers",
+        "Layers": [
+            "sha256:fc43c7ae05a8c3743063309ed517d72a4b5a14d18a155ba72a504947efec3925",
+            "sha256:7b4c2531dc26036426f8cc76ad99b201ecb66f19627598d79ed0698855c82c70",
+            "sha256:89aa5049d37bb5b09925fd6d7780acc9965a732ed2a873172cd158c3a0eb0679",
+            "sha256:5f70bf18a086007016e948b04aed3b82103a36bea41755b6cddfaf10ace3c6ef",
+            "sha256:1d068ab136143e9d407454925529361a30c15277981cc5a6ec80e6c30692d890",
+            "sha256:ec5b117e66b39e5adaf842d1c71e898df5e60f314df0c6bded3e10a2f6292820",
+            "sha256:581fb763c89662be2f73f23afde5f9e3626f90f365b1bf6a3b39b66c389caaa2",
+            "sha256:247e551eec8813c790b306ac73e54f812a19a36a484867697f82bce2d881133c",
+            "sha256:ddf9612869c67686c272edd6a57ecdf99b5b998be29f9b616705cf2bb6ddab5d"
+        ]
+    },
+    "DockerfileMD5": null,
+    "DepsMD5s": {}
+}
