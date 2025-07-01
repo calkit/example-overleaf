@@ -44,6 +44,10 @@ stages:
       md5: 64fbb06619987a6e8d08fe0fcea8933b.dir
       size: 47483
       nfiles: 2
+    - path: references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856
     outs:
     - path: paper/figures
       hash: md5

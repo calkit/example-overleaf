@@ -38,6 +38,7 @@ pipeline:
       environment: _system
       inputs:
         - figures
+        - references.bib
       outputs:
         - path: paper/figures
           storage:
