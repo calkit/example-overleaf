@@ -34,19 +34,22 @@ pipeline:
         - figures/voltage-time-series.png
     copy-figures-to-paper-dir:
       kind: shell-command
-      command: cp -rf figures paper && rm paper/figures/.gitignore
+      command: cp -rf figures references.bib paper && rm paper/figures/.gitignore
       environment: _system
       inputs:
         - figures
       outputs:
         - path: paper/figures
-          storage: null
+          storage:
+        - path: paper/references.bib
+          storage:
     build-paper:
       kind: latex
       environment: tex
       target_path: paper/paper.tex
       inputs:
         - paper/figures
+        - references.bib
       outputs:
         - paper/paper.pdf
 datasets:
@@ -72,13 +75,16 @@ publications:
         - paper.tex
       push_paths: # Always push these to Overleaf
         - figures
+        - references.bib
       # Track the commit of the last sync so we can diff from that
       # If null, we will prioritize their copy, since projects are imported
       # from Overleaf, not to it
-      last_sync_commit: b240ee2294a164145fe11123342d7481922859d9
+      last_sync_commit: 2b994843d5beeae7f037acef0969b1af77922666
 derived_from:
   project: calkit/example-basic
   git_repo_url: https://github.com/calkit/example-basic
   git_rev: 42f00837f638936adad7faf1790058ed0c625ce8
 showcase:
   - publication: paper/paper.pdf
+references:
+  - path: references.bib
