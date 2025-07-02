@@ -74,8 +74,8 @@ stages:
       nfiles: 1
     - path: paper/paper.tex
       hash: md5
-      md5: 41214d49e6c34859fbe1bf6e6dd7f05b
-      size: 943
+      md5: f40f9d9f3118cd4081e3bad9903822be
+      size: 912
     - path: references.bib
       hash: md5
       md5: 2fc1994a416f2c333bb576ad351f0fce
@@ -83,8 +83,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: cac9f0793eeded26806a5a20672120ce
-      size: 112711
+      md5: 939ad8acbba0cebe45d60319dfaf9f39
+      size: 112687
   _check-env-py:
     cmd: calkit check environment --name py
     deps:
