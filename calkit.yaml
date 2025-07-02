@@ -80,7 +80,7 @@ publications:
       # Track the commit of the last sync so we can diff from that
       # If null, we will prioritize their copy, since projects are imported
       # from Overleaf, not to it
-      last_sync_commit: 1dd43ffc47a0fd323a2071d5270697a24daf3399
+      last_sync_commit: adf61d78daa7bbce5e874856ba331cdb0d1f0564
 derived_from:
   project: calkit/example-basic
   git_repo_url: https://github.com/calkit/example-basic
