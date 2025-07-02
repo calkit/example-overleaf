@@ -4,3 +4,9 @@ figures
 *.fdb_latexmk
 *.fls
 /paper.pdf
+*.blg
+*.bbl
+*.log
+*.out
+*.toc
+*.synctex.gz
