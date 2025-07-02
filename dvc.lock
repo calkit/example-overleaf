@@ -37,7 +37,8 @@ stages:
       md5: 4640423c6e66fc77b2f09cce6f289137
       size: 44679
   copy-figures-to-paper-dir:
-    cmd: bash --noprofile --norc -c "cp -rf figures references.bib paper && rm paper/figures/.gitignore"
+    cmd: bash --noprofile --norc -c "cp -rf figures references.bib paper && rm 
+      paper/figures/.gitignore"
     deps:
     - path: figures
       hash: md5
@@ -59,12 +60,12 @@ stages:
       md5: 2fc1994a416f2c333bb576ad351f0fce
       size: 5856
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode -pdf
-      paper/paper.tex
+    cmd: calkit xenv -n tex --no-check -- latexmk -cd -interaction=nonstopmode 
+      -pdf paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c690074afac5591de499368a2502eb82
+      md5: abadb18188a7284a40c3da54429af704
       size: 1171
     - path: paper/figures
       hash: md5
@@ -73,8 +74,8 @@ stages:
       nfiles: 1
     - path: paper/paper.tex
       hash: md5
-      md5: e2b4c2b0045e7dca2d97274b8d6b5b14
-      size: 850
+      md5: 6e53fbf16414b4b42d4c8e6fb461ceb3
+      size: 876
     - path: references.bib
       hash: md5
       md5: 2fc1994a416f2c333bb576ad351f0fce
@@ -82,8 +83,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 889cf68cff9f5adb74564cceac6917d9
-      size: 112629
+      md5: d5a13a15b18115a76290fd0ac088b492
+      size: 112655
   _check-env-py:
     cmd: calkit check environment --name py
     deps:
@@ -101,5 +102,5 @@ stages:
     outs:
     - path: .calkit/env-locks/tex.json
       hash: md5
-      md5: c690074afac5591de499368a2502eb82
+      md5: abadb18188a7284a40c3da54429af704
       size: 1171
