@@ -4,7 +4,7 @@ stages:
     deps:
       - environment.yml
     outs:
-      - .calkit/env-locks/py.yml:
+      - .calkit/env-locks/py:
           cache: false
           persist: true
     always_changed: true
@@ -14,7 +14,7 @@ stages:
     cmd: calkit check environment --name tex
     deps: []
     outs:
-      - .calkit/env-locks/tex.json:
+      - .calkit/env-locks/tex:
           cache: false
           persist: true
     always_changed: true
@@ -25,7 +25,7 @@ stages:
       scripts/collect-data.py
     deps:
       - scripts/collect-data.py
-      - .calkit/env-locks/py.yml
+      - .calkit/env-locks/py
     outs:
       - data/raw/data.csv
     desc: Automatically generated from the 'collect-data' stage in 
@@ -36,34 +36,33 @@ stages:
     deps:
       - scripts/plot-voltage.py
       - data/raw/data.csv
-      - .calkit/env-locks/py.yml
+      - .calkit/env-locks/py
     outs:
       - figures/voltage-time-series.png
     desc: Automatically generated from the 'plot-voltage' stage in 
       calkit.yaml. Changes made here will be overwritten.
-  copy-figures-to-paper-dir:
-    cmd: bash --noprofile --norc -c "cp -rf figures references.bib 
-      paper && rm paper/figures/.gitignore"
+  map-paths:
+    cmd: calkit map-paths --dir-to-dir-merge 'figures->paper/figures' 
+      --file-to-dir 'references.bib->paper'
     deps:
       - figures
       - references.bib
     outs:
       - paper/figures:
           cache: false
-          persist: false
+          persist: true
       - paper/references.bib:
           cache: false
-          persist: false
-    desc: Automatically generated from the 'copy-figures-to-paper-dir'
-      stage in calkit.yaml. Changes made here will be overwritten.
+          persist: true
+    desc: Automatically generated from the 'map-paths' stage in 
+      calkit.yaml. Changes made here will be overwritten.
   build-paper:
-    cmd: calkit xenv -n tex --no-check -- latexmk -cd 
-      -interaction=nonstopmode -pdf paper/paper.tex
+    cmd: calkit latexmk -e tex --no-check paper/paper.tex
     deps:
       - paper/paper.tex
+      - .calkit/env-locks/tex
       - paper/figures
-      - references.bib
-      - .calkit/env-locks/tex.json
+      - paper/references.bib
     outs:
       - paper/paper.pdf
     desc: Automatically generated from the 'build-paper' stage in 
