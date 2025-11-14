@@ -30,6 +30,12 @@ jobs:
         run: |
           git config user.name github-actions[bot]
           git config user.email 41898282+github-actions[bot]@users.noreply.github.com
+      - name: Setup Miniforge
+        uses: conda-incubator/setup-miniconda@v3
+        with:
+          miniforge-version: latest
+          auto-activate-base: true
+          conda-remove-defaults: true
       - name: Setup uv
         uses: astral-sh/setup-uv@v5
       - name: Install Calkit
