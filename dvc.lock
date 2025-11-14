@@ -62,32 +62,30 @@ stages:
       md5: 2fc1994a416f2c333bb576ad351f0fce
       size: 5856
   build-paper:
-    cmd: calkit latexmk -e tex --no-check --merge-dir-to-dir 
-      'figures->paper/figures' --copy-file-to-dir 'references.bib->paper' 
-      paper/paper.tex
+    cmd: calkit latexmk -e tex --no-check paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
       md5: 1b4bc9f153de4a4aafd0644a28ead899.dir
       size: 1195
       nfiles: 1
-    - path: figures
+    - path: paper/figures
       hash: md5
-      md5: 379f3636c933b2b6b68f9b44f8c1e8e7.dir
-      size: 43984
-      nfiles: 2
+      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
+      size: 43959
+      nfiles: 1
     - path: paper/paper.tex
       hash: md5
       md5: f40f9d9f3118cd4081e3bad9903822be
       size: 912
-    - path: references.bib
+    - path: paper/references.bib
       hash: md5
       md5: 2fc1994a416f2c333bb576ad351f0fce
       size: 5856
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 97d2b82ecebd6fa54f4d0e0c0fdffe79
+      md5: 1bed91d80dcb51b87db23476d08165dc
       size: 113607
   _check-env-py:
     cmd: calkit check environment --name py
@@ -110,3 +108,26 @@ stages:
       md5: 1b4bc9f153de4a4aafd0644a28ead899.dir
       size: 1195
       nfiles: 1
+  map-paths:
+    cmd: calkit map-paths --dir-to-dir-merge 'figures->paper/figures' 
+      --file-to-dir 'references.bib->paper'
+    deps:
+    - path: figures
+      hash: md5
+      md5: 379f3636c933b2b6b68f9b44f8c1e8e7.dir
+      size: 43984
+      nfiles: 2
+    - path: references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856
+    outs:
+    - path: paper/figures
+      hash: md5
+      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
+      size: 43959
+      nfiles: 1
+    - path: paper/references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856

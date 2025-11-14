@@ -41,15 +41,28 @@ stages:
       - figures/voltage-time-series.png
     desc: Automatically generated from the 'plot-voltage' stage in 
       calkit.yaml. Changes made here will be overwritten.
-  build-paper:
-    cmd: calkit latexmk -e tex --no-check --merge-dir-to-dir 
-      'figures->paper/figures' --copy-file-to-dir 
-      'references.bib->paper' paper/paper.tex
+  map-paths:
+    cmd: calkit map-paths --dir-to-dir-merge 'figures->paper/figures' 
+      --file-to-dir 'references.bib->paper'
     deps:
-      - paper/paper.tex
       - figures
       - references.bib
+    outs:
+      - paper/figures:
+          cache: false
+          persist: true
+      - paper/references.bib:
+          cache: false
+          persist: true
+    desc: Automatically generated from the 'map-paths' stage in 
+      calkit.yaml. Changes made here will be overwritten.
+  build-paper:
+    cmd: calkit latexmk -e tex --no-check paper/paper.tex
+    deps:
+      - paper/paper.tex
       - .calkit/env-locks/tex
+      - paper/figures
+      - paper/references.bib
     outs:
       - paper/paper.pdf
     desc: Automatically generated from the 'build-paper' stage in 

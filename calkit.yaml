@@ -39,17 +39,21 @@ pipeline:
         - data/raw/data.csv
       outputs:
         - figures/voltage-time-series.png
+    map-paths:
+      kind: map-paths
+      paths:
+        - src: figures
+          dest: paper/figures
+          kind: dir-to-dir-merge
+        - src: references.bib
+          dest: paper
+          kind: file-to-dir
     build-paper:
       kind: latex
       environment: tex
       target_path: paper/paper.tex
-      preprocessing:
-        - kind: merge-dir-to-dir
-          src: figures
-          dest: paper/figures
-        - kind: copy-file-to-dir
-          src: references.bib
-          dest: paper
+      inputs:
+        - from_stage_outputs: map-paths
       outputs:
         - paper/paper.pdf
 
@@ -80,7 +84,6 @@ publications:
         - figures
       push_paths: # Always push these to Overleaf
         - figures
-        - references.bib
       # Track the commit of the last sync so we can diff from that
       # If null, we will prioritize their copy, since projects are imported
       # from Overleaf, not to it
