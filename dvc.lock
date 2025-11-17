@@ -5,9 +5,9 @@ stages:
     deps:
     - path: .calkit/env-locks/py
       hash: md5
-      md5: 7ec7d16c42f263e8716ed16ef509aa5c.dir
-      size: 2061
-      nfiles: 1
+      md5: 159c31b70f5e3a16bd9c2afc12943452.dir
+      size: 6513
+      nfiles: 2
     - path: scripts/collect-data.py
       hash: md5
       md5: fbaf7583794ecd6f2576ea24590e8c47
@@ -22,9 +22,9 @@ stages:
     deps:
     - path: .calkit/env-locks/py
       hash: md5
-      md5: 7ec7d16c42f263e8716ed16ef509aa5c.dir
-      size: 2061
-      nfiles: 1
+      md5: 159c31b70f5e3a16bd9c2afc12943452.dir
+      size: 6513
+      nfiles: 2
     - path: data/raw/data.csv
       hash: md5
       md5: df5bc86d6ccc5aa6fd618355e2eb7861
@@ -38,76 +38,6 @@ stages:
       hash: md5
       md5: f0e999d192f44cf6aa04afb3f33d03bd
       size: 43959
-  copy-figures-to-paper-dir:
-    cmd: bash --noprofile --norc -c "cp -rf figures references.bib paper && rm 
-      paper/figures/.gitignore"
-    deps:
-    - path: figures
-      hash: md5
-      md5: ab89f752301ee89ac21317202bdd9247.dir
-      size: 44704
-      nfiles: 2
-    - path: references.bib
-      hash: md5
-      md5: 2fc1994a416f2c333bb576ad351f0fce
-      size: 5856
-    outs:
-    - path: paper/figures
-      hash: md5
-      md5: 781dfab604b40a5c37e0903a691abdb6.dir
-      size: 44679
-      nfiles: 1
-    - path: paper/references.bib
-      hash: md5
-      md5: 2fc1994a416f2c333bb576ad351f0fce
-      size: 5856
-  build-paper:
-    cmd: calkit latex build -e tex --no-check paper/paper.tex
-    deps:
-    - path: .calkit/env-locks/tex
-      hash: md5
-      md5: 1b4bc9f153de4a4aafd0644a28ead899.dir
-      size: 1195
-      nfiles: 1
-    - path: paper/figures
-      hash: md5
-      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
-      size: 43959
-      nfiles: 1
-    - path: paper/paper.tex
-      hash: md5
-      md5: f40f9d9f3118cd4081e3bad9903822be
-      size: 912
-    - path: paper/references.bib
-      hash: md5
-      md5: 2fc1994a416f2c333bb576ad351f0fce
-      size: 5856
-    outs:
-    - path: paper/paper.pdf
-      hash: md5
-      md5: fbb979be5f98202cc0f6aac12aa24b1a
-      size: 113578
-  _check-env-py:
-    cmd: calkit check environment --name py
-    deps:
-    - path: environment.yml
-      hash: md5
-      md5: ad47ccf7d6698b070bd66005f95f62af
-      size: 120
-    outs:
-    - path: .calkit/env-locks/py
-      hash: md5
-      md5: 7ec7d16c42f263e8716ed16ef509aa5c.dir
-      size: 2061
-      nfiles: 1
-  _check-env-tex:
-    cmd: calkit check environment --name tex
-    outs:
-    - path: .calkit/env-locks/tex
-      hash: md5
-      md5: 1b4bc9f153de4a4aafd0644a28ead899.dir
-      size: 1195
-      nfiles: 1
   map-paths:
     cmd: calkit map-paths --dir-to-dir-merge 'figures->paper/figures' 
       --file-to-dir 'references.bib->paper'
@@ -131,3 +61,29 @@ stages:
       hash: md5
       md5: 2fc1994a416f2c333bb576ad351f0fce
       size: 5856
+  build-paper:
+    cmd: calkit latex build -e tex --no-check paper/paper.tex
+    deps:
+    - path: .calkit/env-locks/tex
+      hash: md5
+      md5: ccb6c85a15e7c6a0c88bffac69f5cef0.dir
+      size: 2390
+      nfiles: 2
+    - path: paper/figures
+      hash: md5
+      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
+      size: 43959
+      nfiles: 1
+    - path: paper/paper.tex
+      hash: md5
+      md5: f40f9d9f3118cd4081e3bad9903822be
+      size: 912
+    - path: paper/references.bib
+      hash: md5
+      md5: 2fc1994a416f2c333bb576ad351f0fce
+      size: 5856
+    outs:
+    - path: paper/paper.pdf
+      hash: md5
+      md5: f77dac04a33fdc790b117c9d8efbdbc5
+      size: 113578
