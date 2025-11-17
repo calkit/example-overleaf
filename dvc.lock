@@ -54,9 +54,9 @@ stages:
     outs:
     - path: paper/figures
       hash: md5
-      md5: 379f3636c933b2b6b68f9b44f8c1e8e7.dir
-      size: 43984
-      nfiles: 2
+      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
+      size: 43959
+      nfiles: 1
     - path: paper/references.bib
       hash: md5
       md5: 2fc1994a416f2c333bb576ad351f0fce
@@ -71,9 +71,9 @@ stages:
       nfiles: 2
     - path: paper/figures
       hash: md5
-      md5: 379f3636c933b2b6b68f9b44f8c1e8e7.dir
-      size: 43984
-      nfiles: 2
+      md5: 1249612e9d824d8d123bdaf1af931ac2.dir
+      size: 43959
+      nfiles: 1
     - path: paper/paper.tex
       hash: md5
       md5: f40f9d9f3118cd4081e3bad9903822be
@@ -85,5 +85,5 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 493765a301bf31f8e447c487e56c3d24
+      md5: 3b90050c09803ce611ee1e8f04b4b328
       size: 113578
