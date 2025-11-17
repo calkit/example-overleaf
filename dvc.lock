@@ -85,8 +85,8 @@ stages:
     outs:
     - path: paper/paper.pdf
       hash: md5
-      md5: 1bed91d80dcb51b87db23476d08165dc
-      size: 113607
+      md5: fbb979be5f98202cc0f6aac12aa24b1a
+      size: 113578
   _check-env-py:
     cmd: calkit check environment --name py
     deps:
