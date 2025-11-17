@@ -62,7 +62,7 @@ stages:
       md5: 2fc1994a416f2c333bb576ad351f0fce
       size: 5856
   build-paper:
-    cmd: calkit latexmk -e tex --no-check paper/paper.tex
+    cmd: calkit latex build -e tex --no-check paper/paper.tex
     deps:
     - path: .calkit/env-locks/tex
       hash: md5
