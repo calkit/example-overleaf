@@ -75,22 +75,20 @@ publications:
     description: This is the paper.
     kind: journal-article
     stage: build-paper
-    overleaf:
-      project_id: 68000059d42b134573cb2e35
-      wdir: paper
-      sync_paths: # Bidirectional
-        - paper.tex
-        - references.bib
-        - figures
-      push_paths: # Always push these to Overleaf
-        - figures
-      # Track the commit of the last sync so we can diff from that
-      # If null, we will prioritize their copy, since projects are imported
-      # from Overleaf, not to it
-      last_sync_commit: 608648239ff284a33034012e97b2d6ab2e89d342
-
 showcase:
   - publication: paper/paper.pdf
 
 references:
   - path: references.bib
+overleaf_sync:
+  paper:
+    url: https://www.overleaf.com/project/68000059d42b134573cb2e35
+    sync_paths:   # Bidirectional
+      - paper.tex
+      - references.bib
+      - figures
+    push_paths:   # Always push these to Overleaf
+      - figures
+      # Track the commit of the last sync so we can diff from that
+      # If null, we will prioritize their copy, since projects are imported
+      # from Overleaf, not to it
