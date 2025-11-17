@@ -1,11 +1,17 @@
 name: example-overleaf
 title: Overleaf integration example
-description: A Calkit project that demonstrates integrating with Overleaf
-  to edit a publication.
+description: A Calkit project that demonstrates integrating with
+  Overleaf to edit a publication.
 git_repo_url: https://github.com/calkit/example-overleaf
+derived_from:
+  project: calkit/example-basic
+  git_repo_url: https://github.com/calkit/example-basic
+  git_rev: 42f00837f638936adad7faf1790058ed0c625ce8
+
 dependencies:
   - docker
   - conda
+
 environments:
   py:
     path: environment.yml
@@ -16,6 +22,7 @@ environments:
     image: texlive/texlive:latest-full
     wdir: /work
     description: TeX Live via Docker.
+
 pipeline:
   stages:
     collect-data:
@@ -32,60 +39,51 @@ pipeline:
         - data/raw/data.csv
       outputs:
         - figures/voltage-time-series.png
-    copy-figures-to-paper-dir:
-      kind: shell-command
-      command: cp -rf figures references.bib paper && rm paper/figures/.gitignore
-      environment: _system
-      inputs:
-        - figures
-        - references.bib
-      outputs:
-        - path: paper/figures
-          storage:
-        - path: paper/references.bib
-          storage:
+    map-paths:
+      kind: map-paths
+      paths:
+        - src: figures
+          dest: paper/figures
+          kind: dir-to-dir-merge
+        - src: references.bib
+          dest: paper
+          kind: file-to-dir
     build-paper:
       kind: latex
       environment: tex
       target_path: paper/paper.tex
       inputs:
-        - paper/figures
-        - references.bib
+        - from_stage_outputs: map-paths
       outputs:
         - paper/paper.pdf
+
 datasets:
   - path: data/raw/data.csv
     title: Raw data
     description: This is raw voltage data.
     stage: collect-data
+
 figures:
   - path: figures/voltage-time-series.png
     title: Raw voltage time series
     description: A plot of the raw voltage time series.
     stage: plot-voltage
+
 publications:
   - path: paper/paper.pdf
     title: The paper
     description: This is the paper.
     kind: journal-article
     stage: build-paper
-    overleaf:
-      project_id: 68000059d42b134573cb2e35
-      wdir: paper
-      sync_paths: # Bidirectional
-        - paper.tex
-      push_paths: # Always push these to Overleaf
-        - figures
-        - references.bib
-      # Track the commit of the last sync so we can diff from that
-      # If null, we will prioritize their copy, since projects are imported
-      # from Overleaf, not to it
-      last_sync_commit: 14d66497e747f80e96fe48d0a5945939122f763d
-derived_from:
-  project: calkit/example-basic
-  git_repo_url: https://github.com/calkit/example-basic
-  git_rev: 42f00837f638936adad7faf1790058ed0c625ce8
+
 showcase:
   - publication: paper/paper.pdf
+
 references:
   - path: references.bib
+
+overleaf_sync:
+  paper:
+    url: https://www.overleaf.com/project/68000059d42b134573cb2e35
+    push_paths: # Always push these to Overleaf
+      - figures
