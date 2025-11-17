@@ -1,6 +1,6 @@
 name: example-overleaf
 title: Overleaf integration example
-description: A Calkit project that demonstrates integrating with
+description: A Calkit project that demonstrates integrating with 
   Overleaf to edit a publication.
 git_repo_url: https://github.com/calkit/example-overleaf
 derived_from:
