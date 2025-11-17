@@ -80,15 +80,9 @@ showcase:
 
 references:
   - path: references.bib
+
 overleaf_sync:
   paper:
     url: https://www.overleaf.com/project/68000059d42b134573cb2e35
-    sync_paths:   # Bidirectional
-      - paper.tex
-      - references.bib
-      - figures
     push_paths:   # Always push these to Overleaf
       - figures
-      # Track the commit of the last sync so we can diff from that
-      # If null, we will prioritize their copy, since projects are imported
-      # from Overleaf, not to it
